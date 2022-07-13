@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 
 let posts = [];
+let route = "";
 
 app.get("/", function (req, res) {
 
@@ -53,13 +54,11 @@ app.post("/compose", function (req, res) {
   res.redirect("/");
 })
 
-
-
-
-
-
-
-
+app.get("/:postName", function(req, res) {
+  route = req.params.postName;
+  console.log(route);
+  res.redirect("/");
+})
 
 app.listen(3000, function () {
   console.log("Server started on port 3000");
